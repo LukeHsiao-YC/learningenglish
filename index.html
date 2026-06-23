@@ -1,6 +1,56 @@
-<!-- ... existing code ... -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My English Learning Hub</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-active { border-bottom: 2px solid #3b82f6; color: #3b82f6; font-weight: 600; }
+        .tab-inactive { color: #64748b; }
+        .tab-inactive:hover { color: #0f172a; background-color: #f1f5f9; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // 完整的單字庫資料 (包含第一天與第二天)
         const vocabularyData = [
-            // ... existing code ...
+            // 第一天資料
+            { word: "bolster", phonetic: "[ˈboʊlstɚ]", partOfSpeech: "v.", meaning: "鞏固；加強", example: "Regular practice can bolster language skills effectively.", exampleZh: "規律的練習能有效加強語言能力。" },
+            { word: "defense", phonetic: "[dɪˈfɛns]", partOfSpeech: "n.", meaning: "防禦；防衛", example: "The two sides sealed the agreement after a long discussion.", exampleZh: "雙方在長時間的討論後敲定了這項協議。" },
+            { word: "seal", phonetic: "[sil]", partOfSpeech: "v.", meaning: "確定；決定", example: "The two sides sealed the agreement after a long discussion.", exampleZh: "雙方在長時間的討論後敲定了這項協議。" },
+            { word: "landmark", phonetic: "[ˈlændˌmɑrk]", partOfSpeech: "n.", meaning: "地標；里程碑", example: "", exampleZh: "" },
+            { word: "slash", phonetic: "[slæʃ]", partOfSpeech: "v.", meaning: "大幅削減", example: "The company plans to slash costs to increase profits.", exampleZh: "那家公司計畫大幅削減成本以提高利潤。" },
+            { word: "string", phonetic: "[strɪŋ]", partOfSpeech: "n.", meaning: "一串；一連串", example: "", exampleZh: "" },
+            { word: "hash out", phonetic: "[hæʃ] [aʊt]", partOfSpeech: "v.", meaning: "商討", example: "The team will hash out the details in the meeting.", exampleZh: "團隊將在會議中商討細節。" },
+            { word: "diversify", phonetic: "[dəˈvɝsəˌfaɪ]", partOfSpeech: "v.", meaning: "使多樣化；增加種類", example: "The economy needs to diversify to remain stable.", exampleZh: "經濟需要多元化才能保持穩定。" },
+            { word: "fuel", phonetic: "[ˈfjuəl]", partOfSpeech: "v.", meaning: "激發；使加劇", example: "Rumors about a bank crisis fueled uncertainty in the market.", exampleZh: "關於一場銀行危機的謠言加劇了市場的不確定性。" },
+            { word: "buzz", phonetic: "[bʌz]", partOfSpeech: "n.", meaning: "熱烈討論；騷動", example: "", exampleZh: "" },
+            { word: "copyright", phonetic: "[ˈkɑpiˌraɪt]", partOfSpeech: "n.", meaning: "著作權；版權", example: "", exampleZh: "" },
+            { word: "intellectual property", phonetic: "[ˌɪntəˈlɛktʃuəl] [ˈprɑpɚti]", partOfSpeech: "n.", meaning: "智慧財產", example: "", exampleZh: "" },
+            { word: "likeness", phonetic: "[ˈlaɪknəs]", partOfSpeech: "n.", meaning: "外觀；模樣", example: "", exampleZh: "" },
+            { word: "priority", phonetic: "[praɪˈɔrəti]", partOfSpeech: "n.", meaning: "優先事項；首要事務", example: "", exampleZh: "" },
+            { word: "spectacle", phonetic: "[ˈspɛktəkəl]", partOfSpeech: "n.", meaning: "精彩表演；壯觀場面", example: "", exampleZh: "" },
+            { word: "grand", phonetic: "[grænd]", partOfSpeech: "adj.", meaning: "宏偉的；盛大的", example: "The festival will conclude with a grand performance by a famous singer.", exampleZh: "這場慶典將以一位知名歌手的盛大演出作結。" },
+            { word: "face off", phonetic: "[fes] [ɔf]", partOfSpeech: "v.", meaning: "對決；交鋒", example: "Two teams will face off in the final match of the tournament.", exampleZh: "兩支隊伍將在錦標賽的決賽中對決。" },
+            { word: "inaugural", phonetic: "[ɪˈnɔgjərəl]", partOfSpeech: "adj.", meaning: "開始的；首次的", example: "The school is holding an inaugural ceremony for new students.", exampleZh: "學校正在為新生舉行開學典禮。" },
+            { word: "participant", phonetic: "[pɑrˈtɪsəpənt]", partOfSpeech: "n.", meaning: "參與者；參加者", example: "", exampleZh: "" },
+            
+            // 第二天資料 (Apple 50週年)
             { word: "empire", phonetic: "[ˈɛmpaɪr]", partOfSpeech: "n.", meaning: "帝國；大企業", example: "", exampleZh: "" },
             { word: "influential", phonetic: "[ˌɪnflʊˈɛnʃəl]", partOfSpeech: "adj.", meaning: "有影響力的", example: "The book remains influential decades after it was published.", exampleZh: "這本書在出版數十年後仍具影響力。" },
             { word: "profitable", phonetic: "[ˈprɑfətəbəl]", partOfSpeech: "adj.", meaning: "賺錢的；有利潤的", example: "The restaurant has stayed profitable even during slow seasons.", exampleZh: "那間餐廳即使在淡季仍維持獲利。" },
@@ -29,8 +79,40 @@
             { word: "take a toll", phonetic: "", partOfSpeech: "phr.", meaning: "耗損；造成損失", example: "Long working hours took a toll on Olivia's health.", exampleZh: "長工時對奧莉薇亞的健康造成了傷害。" }
         ];
 
+        // 完整的文章資料 (包含第一天與第二天)
         const articleData = [
-            // ... existing code ...
+            // 第一天文章
+            {
+                title: "EU and Australia Bolster Trade and Defense Ties",
+                titleZh: "歐盟與澳洲強化貿易及國防關係",
+                paragraphs: [
+                    { en: "After years of talks, Australia and the European Union have finally sealed a landmark trade deal.", zh: "經過多年的商談，澳洲和歐盟終於敲定一項具里程碑意義的貿易協議。" },
+                    { en: "This agreement will be ... is expected to slash nearly all tariffs on European products exported to Australia.", zh: "這項協議將會……預計會大幅削減幾乎所有對出口到澳洲的歐洲產品課徵的關稅。" },
+                    { en: "The two sides have also agreed to bolster defense and security ties. This is the latest in a string of deals hashed out by world and regional powers looking to diversify during a time of growing global uncertainty—much of it fueled in part by the U.S. president's trade wars and tariffs.", zh: "雙方也已同意強化國防及安全關係。這是指望在全球不確定性日益升高之際尋求多元化的世界和區域強權所討論出的一連串協議中的最新一項——這種不確定性在很大程度上是由美國總統的貿易戰和關稅所推動的。" }
+                ]
+            },
+            {
+                title: "AI Video Generator Sora Shut Down",
+                titleZh: "AI 影片生成工具 Sora 關閉服務",
+                paragraphs: [
+                    { en: "Tech company OpenAI is shutting down its video generation app Sora just months after its release.", zh: "科技公司 OpenAI 要關閉發布僅幾個月的影片生成應用程式 Sora。" },
+                    { en: "It gained a lot of buzz online after its release in September of last year, but the app also drew criticism from copyright holders since it was widely using intellectual property and the likenesses of celebrities in the videos that it generated.", zh: "它於去年九月發布後在網路上引起熱烈討論，但該應用程式也招致版權持有者的批評，因為它在生成的影片中廣泛使用智慧財產內容和名人的樣貌。" },
+                    { en: "OpenAI says that it will instead focus on other priorities.", zh: "OpenAI 表示將轉而專注於其他優先事項。" },
+                    { en: "A source tells CNN that a deal with the Walt Disney Company will not be moving forward due to the change. That deal would've cleared the use of Disney characters in Sora's AI-generated videos.", zh: "一個消息來源告訴本台，由於這項變動，與華特迪士尼公司的一份協議將不會繼續進行。該協議原本將核准在 Sora 的 AI 生成影片中使用迪士尼角色。" }
+                ]
+            },
+            {
+                title: "Eurovision Sets Up Competition in East Asia",
+                titleZh: "歐洲歌唱大賽前進亞洲",
+                paragraphs: [
+                    { en: "The pop spectacle of Eurovision is going to the East Asia region this year.", zh: "流行音樂盛事歐洲歌唱大賽今年要前進東亞地區。" },
+                    { en: "The grand final of the regional competition will be hosted in Bangkok on November the 14th.", zh: "這場地區性比賽的總決賽將於十一月十四日在曼谷舉行。" },
+                    { en: "Ten nations are set to face off in the inaugural competition. So far, they include South Korea, the Philippines, Malaysia and Laos.", zh: "十個國家準備在首屆比賽中對決。到目前為止，那些國家包括韓國、菲律賓、馬來西亞和寮國。" },
+                    { en: "The contestants' [contest's] website says more participants will be announced in the coming months.", zh: "賽事網站表示，未來幾個月將會公布更多參賽者。" },
+                    { en: "The original Eurovision started in 1956, obviously in Europe. It's still called Eurovision—we'll understand their thinking after a while.", zh: "最初的歐洲歌唱大賽始於一九五六年，顯然是在歐洲。它仍被稱為歐洲歌唱大賽——過一陣子我們就會明白他們的想法了。" }
+                ]
+            },
+            // 第二天文章 (Apple 50週年)
             {
                 title: "50 Years of Apple: From a California Garage to a Trillion-Dollar Tech Empire",
                 titleZh: "蘋果 50 年——從車庫新創公司到兆元科技帝國",
@@ -51,4 +133,207 @@
                 ]
             }
         ];
-<!-- ... existing code ... -->
+
+        const VocabularyList = () => {
+            return (
+                <div className="fade-in max-w-4xl mx-auto bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <h2 className="text-2xl font-bold mb-6 text-slate-800 flex items-center gap-2">
+                        <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        單字庫 Vocabulary ({vocabularyData.length})
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {vocabularyData.map((item, index) => (
+                            <div key={index} className="p-4 rounded-xl border border-slate-100 hover:border-blue-200 hover:shadow-md transition-all bg-slate-50 hover:bg-white group">
+                                <div className="flex items-baseline gap-2 mb-2">
+                                    <h3 className="text-lg font-bold text-slate-900">{item.word}</h3>
+                                    {item.phonetic && <span className="text-sm text-slate-500 font-mono">{item.phonetic}</span>}
+                                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">{item.partOfSpeech}</span>
+                                </div>
+                                <p className="text-slate-700 font-medium mb-2">{item.meaning}</p>
+                                {item.example && (
+                                    <div className="mt-3 text-sm border-l-2 border-slate-300 pl-3">
+                                        <p className="text-slate-600 italic mb-1">{item.example}</p>
+                                        <p className="text-slate-500">{item.exampleZh}</p>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const ArticleReader = () => {
+            return (
+                <div className="fade-in max-w-4xl mx-auto space-y-8">
+                    {articleData.map((article, idx) => (
+                        <article key={idx} className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100">
+                            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-slate-900">{article.title}</h2>
+                            <h3 className="text-lg text-slate-500 mb-6 font-medium">{article.titleZh}</h3>
+                            <div className="space-y-6">
+                                {article.paragraphs.map((p, pIdx) => (
+                                    <div key={pIdx} className="group flex flex-col gap-2 p-4 -mx-4 rounded-xl hover:bg-slate-50 transition-colors">
+                                        <p className="text-lg text-slate-800 leading-relaxed font-serif">{p.en}</p>
+                                        <p className="text-md text-slate-500 leading-relaxed">{p.zh}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            );
+        };
+
+        const Quiz = () => {
+            const [currentQuestion, setCurrentQuestion] = React.useState(null);
+            const [options, setOptions] = React.useState([]);
+            const [selected, setSelected] = React.useState(null);
+            const [isCorrect, setIsCorrect] = React.useState(null);
+            const [score, setScore] = React.useState(0);
+            const [totalAnswered, setTotalAnswered] = React.useState(0);
+
+            const generateQuestion = () => {
+                setSelected(null);
+                setIsCorrect(null);
+                
+                // Randomly pick a correct word
+                const correctIdx = Math.floor(Math.random() * vocabularyData.length);
+                const correctWord = vocabularyData[correctIdx];
+                
+                // Pick 3 wrong options
+                let wrongOptions = [];
+                while(wrongOptions.length < 3) {
+                    const wrongIdx = Math.floor(Math.random() * vocabularyData.length);
+                    if(wrongIdx !== correctIdx && !wrongOptions.includes(vocabularyData[wrongIdx])) {
+                        wrongOptions.push(vocabularyData[wrongIdx]);
+                    }
+                }
+                
+                // Shuffle options
+                const allOptions = [correctWord, ...wrongOptions].sort(() => Math.random() - 0.5);
+                
+                // Determine question type (50% meaning, 50% example fill-in-blank if example exists)
+                const isExampleType = correctWord.example && Math.random() > 0.5;
+                
+                let questionText = "";
+                if(isExampleType) {
+                    // Replace word in example with blanks (case insensitive)
+                    const regex = new RegExp(correctWord.word, "gi");
+                    questionText = correctWord.example.replace(regex, "________");
+                } else {
+                    questionText = `What is the English word for "${correctWord.meaning}"?`;
+                }
+
+                setCurrentQuestion({
+                    type: isExampleType ? 'example' : 'meaning',
+                    text: questionText,
+                    answer: correctWord,
+                    zhHint: isExampleType ? correctWord.exampleZh : null
+                });
+                setOptions(allOptions);
+            };
+
+            React.useEffect(() => {
+                generateQuestion();
+            }, []);
+
+            const handleSelect = (option) => {
+                if (selected) return; // Prevent double click
+                setSelected(option);
+                const correct = option.word === currentQuestion.answer.word;
+                setIsCorrect(correct);
+                setTotalAnswered(prev => prev + 1);
+                if (correct) setScore(prev => prev + 1);
+            };
+
+            if (!currentQuestion) return null;
+
+            return (
+                <div className="fade-in max-w-2xl mx-auto bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 text-center">
+                    <h2 className="text-2xl font-bold mb-2 text-slate-800">每日複習測驗 Daily Quiz</h2>
+                    <p className="text-slate-500 mb-8">Score: {score} / {totalAnswered}</p>
+                    
+                    <div className="bg-blue-50 p-6 rounded-xl mb-8 min-h-[120px] flex flex-col justify-center">
+                        <p className="text-xl font-medium text-slate-800 mb-2">{currentQuestion.text}</p>
+                        {currentQuestion.zhHint && <p className="text-sm text-slate-500">{currentQuestion.zhHint}</p>}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                        {options.map((opt, i) => {
+                            let btnClass = "p-4 rounded-xl border-2 text-lg font-medium transition-all ";
+                            if (!selected) {
+                                btnClass += "border-slate-200 hover:border-blue-500 hover:bg-blue-50 text-slate-700";
+                            } else {
+                                if (opt.word === currentQuestion.answer.word) {
+                                    btnClass += "border-green-500 bg-green-50 text-green-700"; // Correct answer is always green
+                                } else if (selected.word === opt.word && !isCorrect) {
+                                    btnClass += "border-red-500 bg-red-50 text-red-700"; // Wrong selected is red
+                                } else {
+                                    btnClass += "border-slate-100 bg-slate-50 text-slate-400"; // Others are faded
+                                }
+                            }
+
+                            return (
+                                <button key={i} onClick={() => handleSelect(opt)} className={btnClass} disabled={!!selected}>
+                                    {opt.word}
+                                </button>
+                            );
+                        })}
+                    </div>
+
+                    {selected && (
+                        <div className="fade-in">
+                            <p className={`text-lg font-bold mb-4 ${isCorrect ? 'text-green-600' : 'text-red-500'}`}>
+                                {isCorrect ? '✨ Correct! 答對了！' : `❌ 答錯了！正確答案是: ${currentQuestion.answer.word}`}
+                            </p>
+                            <button onClick={generateQuestion} className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-medium shadow-md transition-colors">
+                                下一題 Next Question
+                            </button>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [activeTab, setActiveTab] = React.useState('vocab'); // 'vocab', 'read', 'quiz'
+
+            return (
+                <div className="max-w-6xl mx-auto p-4 md:p-8">
+                    <header className="mb-8 text-center">
+                        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight mb-2">My English Hub</h1>
+                        <p className="text-slate-500">Personalized learning database powered by daily reading.</p>
+                    </header>
+
+                    <nav className="flex justify-center gap-2 mb-8 bg-white p-2 rounded-2xl shadow-sm border border-slate-100 max-w-fit mx-auto">
+                        <button 
+                            onClick={() => setActiveTab('vocab')}
+                            className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-colors ${activeTab === 'vocab' ? 'bg-blue-100 text-blue-700' : 'text-slate-600 hover:bg-slate-50'}`}>
+                            單字庫 Vocab
+                        </button>
+                        <button 
+                            onClick={() => setActiveTab('read')}
+                            className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-colors ${activeTab === 'read' ? 'bg-blue-100 text-blue-700' : 'text-slate-600 hover:bg-slate-50'}`}>
+                            文章閱讀 Reading
+                        </button>
+                        <button 
+                            onClick={() => setActiveTab('quiz')}
+                            className={`px-6 py-2.5 rounded-xl text-sm font-medium transition-colors ${activeTab === 'quiz' ? 'bg-blue-100 text-blue-700' : 'text-slate-600 hover:bg-slate-50'}`}>
+                            每日測驗 Quiz
+                        </button>
+                    </nav>
+
+                    <main>
+                        {activeTab === 'vocab' && <VocabularyList />}
+                        {activeTab === 'read' && <ArticleReader />}
+                        {activeTab === 'quiz' && <Quiz />}
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
