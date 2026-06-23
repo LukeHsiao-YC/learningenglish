@@ -1,400 +1,54 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的英文學習資料庫</title>
-    <!-- 使用 Tailwind CSS 作為樣式框架 -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- 引入 Font Awesome 供圖示使用 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 引入 Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone@7.23.6/babel.min.js"></script>
+<!-- ... existing code ... -->
+        const vocabularyData = [
+            // ... existing code ...
+            { word: "empire", phonetic: "[ˈɛmpaɪr]", partOfSpeech: "n.", meaning: "帝國；大企業", example: "", exampleZh: "" },
+            { word: "influential", phonetic: "[ˌɪnflʊˈɛnʃəl]", partOfSpeech: "adj.", meaning: "有影響力的", example: "The book remains influential decades after it was published.", exampleZh: "這本書在出版數十年後仍具影響力。" },
+            { word: "profitable", phonetic: "[ˈprɑfətəbəl]", partOfSpeech: "adj.", meaning: "賺錢的；有利潤的", example: "The restaurant has stayed profitable even during slow seasons.", exampleZh: "那間餐廳即使在淡季仍維持獲利。" },
+            { word: "genius", phonetic: "[ˈdʒinjəs]", partOfSpeech: "n.", meaning: "天才；天賦", example: "", exampleZh: "" },
+            { word: "intend", phonetic: "[ɪnˈtɛnd]", partOfSpeech: "v.", meaning: "想要；打算", example: "Aisha intends to expand the research project into a full academic study.", exampleZh: "艾莎打算把這個研究計畫擴大成一個全面性的學術研究。" },
+            { word: "prank", phonetic: "[præŋk]", partOfSpeech: "n.", meaning: "惡作劇", example: "", exampleZh: "" },
+            { word: "corporation", phonetic: "[ˌkɔrpəˈreʃən]", partOfSpeech: "n.", meaning: "大公司；大企業", example: "", exampleZh: "" },
+            { word: "thrill", phonetic: "[θrɪl]", partOfSpeech: "v.", meaning: "使興奮；使激動", example: "The audience was thrilled with the intensity of the final scene.", exampleZh: "觀眾因最後一幕的張力而感到興奮。" },
+            { word: "adorable", phonetic: "[əˈdɔrəbəl]", partOfSpeech: "adj.", meaning: "可愛的；討人喜歡的", example: "In the photo, the child looks absolutely adorable.", exampleZh: "在這張照片中，那個孩子看起來可愛極了。" },
+            { word: "put ... on the map", phonetic: "", partOfSpeech: "phr.", meaning: "讓...出名、受矚目", example: "The successful film put the young director on the map.", exampleZh: "這部成功的電影讓那位年輕導演一舉成名。" },
+            { word: "affordable", phonetic: "[əˈfɔrdəbəl]", partOfSpeech: "adj.", meaning: "可負擔的；價格合理的", example: "Finding an affordable apartment in the city can be difficult.", exampleZh: "在這座城市找到一間價格合理的公寓可能很困難。" },
+            { word: "harsh", phonetic: "[hɑrʃ]", partOfSpeech: "adj.", meaning: "嚴厲的；苛刻的", example: "The teacher's harsh comments upset the student.", exampleZh: "老師嚴厲的評論讓這名學生很難過。" },
+            { word: "demanding", phonetic: "[dɪˈmændɪŋ]", partOfSpeech: "adj.", meaning: "苛求的；要求高的", example: "Only highly skilled workers can handle such a demanding role.", exampleZh: "只有技巧高超的員工才能應付如此高要求的職位。" },
+            { word: "bankrupt", phonetic: "[ˈbæŋkrʌpt]", partOfSpeech: "adj.", meaning: "破產的", example: "Many shops went bankrupt during the economic crisis.", exampleZh: "在經濟危機期間，許多商店破產。" },
+            { word: "exile", phonetic: "[ˈɛgzaɪl]", partOfSpeech: "n.", meaning: "驅逐；流放", example: "", exampleZh: "" },
+            { word: "frustrate", phonetic: "[ˈfrʌstreɪt]", partOfSpeech: "v.", meaning: "使懊惱；使挫折", example: "Technical issues often frustrate new users.", exampleZh: "技術問題往往讓新的使用者感到挫折。" },
+            { word: "slump", phonetic: "[slʌmp]", partOfSpeech: "v.", meaning: "衰退；下跌", example: "Sales began to slump after the holiday season.", exampleZh: "假期季過後，銷售開始衰退。" },
+            { word: "radically", phonetic: "[ˈrædɪkəli]", partOfSpeech: "adv.", meaning: "激進地；徹底地", example: "", exampleZh: "" },
+            { word: "incredible", phonetic: "[ɪnˈkrɛdəbəl]", partOfSpeech: "adj.", meaning: "不可思議的；驚人的", example: "Such incredible progress surprised the experts.", exampleZh: "如此驚人的進展讓專家們感到意外。" },
+            { word: "revolutionary", phonetic: "[ˌrɛvəˈluʃənɛri]", partOfSpeech: "adj.", meaning: "革命性的", example: "The invention is considered revolutionary in modern history.", exampleZh: "這項發明被認為在現代史上具有革命性。" },
+            { word: "communicator", phonetic: "[kəˈmjunəˌkeɪtɚ]", partOfSpeech: "n.", meaning: "通訊器", example: "", exampleZh: "" },
+            { word: "unveil", phonetic: "[ʌnˈvel]", partOfSpeech: "v.", meaning: "為...揭幕；公布", example: "The designer unveiled her newest collection last week.", exampleZh: "設計師上週展示了自己最新的作品系列。" },
+            { word: "aggressive", phonetic: "[əˈgrɛsɪv]", partOfSpeech: "adj.", meaning: "侵略性的；(疾病) 惡性的", example: "Investors worry about the company's aggressive expansion.", exampleZh: "投資人憂心該公司侵略性的擴張。" },
+            { word: "visible", phonetic: "[ˈvɪzəbəl]", partOfSpeech: "adj.", meaning: "看得見的；顯而易見的", example: "The damage is clearly visible from a distance.", exampleZh: "損壞情況從遠處就可以清楚看見。" },
+            { word: "behind the scenes", phonetic: "", partOfSpeech: "phr.", meaning: "在幕後；私下", example: "The staff prepared everything behind the scenes before the event.", exampleZh: "工作人員在活動前於幕後準備好一切。" },
+            { word: "take a toll", phonetic: "", partOfSpeech: "phr.", meaning: "耗損；造成損失", example: "Long working hours took a toll on Olivia's health.", exampleZh: "長工時對奧莉薇亞的健康造成了傷害。" }
+        ];
 
-    <style>
-        body {
-            font-family: 'Roboto', 'Noto Sans TC', sans-serif;
-            background-color: #f3f4f6; /* Tailwind gray-100 */
-        }
-        /* 自定義捲軸樣式 */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
-        }
-        /* 測驗選項的 hover 效果 */
-        .quiz-option:hover:not(:disabled) {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-    </style>
-</head>
-<body>
-    <div id="root"></div>
-
-<script type="text/babel">
-    const { useState, useEffect, useMemo } = React;
-
-    // --- 資料區 (Data Source) ---
-    // 從截圖中擷取的單字資料
-    const vocabularyData = [
-        { id: 1, word: 'bolster', phonetic: '[ˋbolstɚ]', partOfSpeech: 'v.', meaning: '鞏固；加強', example: 'Regular practice can bolster language skills effectively.', exampleTranslation: '規律的練習能有效加強語言能力。' },
-        { id: 2, word: 'defense', phonetic: '[dɪˋfɛns]', partOfSpeech: 'n.', meaning: '防禦；防衛', example: '', exampleTranslation: '' },
-        { id: 3, word: 'seal', phonetic: '[sil]', partOfSpeech: 'v.', meaning: '確定；決定', example: 'The two sides sealed the agreement after a long discussion.', exampleTranslation: '雙方在長時間的討論後敲定了這項協議。' },
-        { id: 4, word: 'landmark', phonetic: '[ˋlænd͵mɑrk]', partOfSpeech: 'n.', meaning: '地標；里程碑', example: '', exampleTranslation: '' },
-        { id: 5, word: 'slash', phonetic: '[slæʃ]', partOfSpeech: 'v.', meaning: '大幅削減', example: 'The company plans to slash costs to increase profits.', exampleTranslation: '那家公司計畫大幅削減成本以提高利潤。' },
-        { id: 6, word: 'string', phonetic: '[strɪŋ]', partOfSpeech: 'n.', meaning: '一串；一連串', example: '', exampleTranslation: '' },
-        { id: 7, word: 'hash out', phonetic: '[hæʃ] [aʊt]', partOfSpeech: 'v.', meaning: '商討', example: 'The team will hash out the details in the meeting.', exampleTranslation: '團隊將在會議中商討細節。' },
-        { id: 8, word: 'diversify', phonetic: '[dəˋvɝsə͵faɪ]', partOfSpeech: 'v.', meaning: '使多樣化；增加種類', example: 'The economy needs to diversify to remain stable.', exampleTranslation: '經濟需要多元化才能保持穩定。' },
-        { id: 9, word: 'fuel', phonetic: '[ˋfjuəl]', partOfSpeech: 'v.', meaning: '激發；使加劇', example: 'Rumors about a bank crisis fueled uncertainty in the market.', exampleTranslation: '關於一場銀行危機的謠言加劇了市場的不確定性。' },
-        { id: 10, word: 'buzz', phonetic: '[bʌz]', partOfSpeech: 'n.', meaning: '熱烈討論；騷動', example: '', exampleTranslation: '' },
-        { id: 11, word: 'copyright', phonetic: '[ˋkɑpi͵raɪt]', partOfSpeech: 'n.', meaning: '著作權；版權', example: '', exampleTranslation: '' },
-        { id: 12, word: 'intellectual property', phonetic: '[͵ɪntəˋlɛktʃʊəl] [ˋprɑpɚtɪ]', partOfSpeech: 'n.', meaning: '智慧財產', example: '', exampleTranslation: '' },
-        { id: 13, word: 'likeness', phonetic: '[ˋlaɪknɪs]', partOfSpeech: 'n.', meaning: '外觀；模樣', example: '', exampleTranslation: '' },
-        { id: 14, word: 'priority', phonetic: '[praɪˋɔrətɪ]', partOfSpeech: 'n.', meaning: '優先事項；首要事務', example: '', exampleTranslation: '' },
-        { id: 15, word: 'spectacle', phonetic: '[ˋspɛktək!]', partOfSpeech: 'n.', meaning: '精彩表演；壯觀場面', example: '', exampleTranslation: '' },
-        { id: 16, word: 'grand', phonetic: '[grænd]', partOfSpeech: 'adj.', meaning: '宏偉的；盛大的', example: 'The festival will conclude with a grand performance by a famous singer.', exampleTranslation: '這場慶典將以一位知名歌手的盛大演出作結。' },
-        { id: 17, word: 'face off', phonetic: '[fes] [ɔf]', partOfSpeech: 'v.', meaning: '對決；交鋒', example: 'Two teams will face off in the final match of the tournament.', exampleTranslation: '兩支隊伍將在錦標賽的決賽中對決。' },
-        { id: 18, word: 'inaugural', phonetic: '[ɪnˋɔgjərəl]', partOfSpeech: 'adj.', meaning: '開始的；首次的', example: 'The school is holding an inaugural ceremony for new students.', exampleTranslation: '學校正在為新生舉行開學典禮。' },
-        { id: 19, word: 'participant', phonetic: '[pɑrˋtɪsəpənt]', partOfSpeech: 'n.', meaning: '參與者', example: '', exampleTranslation: '' },
-    ];
-
-    // 從截圖中擷取的文章資料
-    const articleData = [
-        {
-            id: 1,
-            category: 'POLITICS 政治',
-            titleEN: 'EU and Australia Bolster Trade and Defense Ties',
-            titleTW: '歐盟與澳洲強化貿易及國防關係',
-            content: "After years of talks, Australia and the European Union have finally sealed a landmark trade deal. This agreement will be ... is expected to slash nearly all tariffs on European products exported to Australia. The two sides have also agreed to bolster defense and security ties. This is the latest in a string of deals hashed out by world and regional powers looking to diversify during a time of growing global uncertainty—much of it fueled in part by the U.S. president's trade wars and tariffs."
-        },
-        {
-            id: 2,
-            category: 'BUSINESS 商業',
-            titleEN: 'AI Video Generator Sora Shut Down',
-            titleTW: 'AI 影片生成工具 Sora 關閉服務',
-            content: "Tech company OpenAI is shutting down its video generation app Sora just months after its release. It gained a lot of buzz online after its release in September of last year, but the app also drew criticism from copyright holders since it was widely using intellectual property and the likenesses of celebrities in the videos that it generated. OpenAI says that it will instead focus on other priorities. A source tells CNN that a deal with the Walt Disney Company will not be moving forward due to the change. That deal would've cleared the use of Disney characters in Sora's AI-generated videos."
-        },
-        {
-            id: 3,
-            category: 'ENTERTAINMENT 娛樂',
-            titleEN: 'Eurovision Sets Up Competition in East Asia',
-            titleTW: '歐洲歌唱大賽前進亞洲',
-            content: "The pop spectacle of Eurovision is going to the East Asia region this year. The grand final of the regional competition will be hosted in Bangkok on November the 14th. Ten nations are set to face off in the inaugural competition. So far, they include South Korea, the Philippines, Malaysia and Laos. The contestants' [contest's] website says more participants will be announced in the coming months. The original Eurovision started in 1956, obviously in Europe. It's still called Eurovision—we'll understand their thinking after a while."
-        }
-    ];
-
-    // --- 子元件 ---
-
-    // 單字列表元件
-    const VocabList = ({ vocabularies }) => (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {vocabularies.map((v) => (
-                <div key={v.id} className="bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
-                    <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-bold text-indigo-700">{v.word}</h3>
-                        <span className="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-600 rounded-full">{v.partOfSpeech}</span>
-                    </div>
-                    <div className="text-sm text-gray-500 mb-3">{v.phonetic}</div>
-                    <div className="text-lg font-medium text-gray-800 mb-4">{v.meaning}</div>
-                    
-                    {v.example && (
-                        <div className="mt-4 p-3 bg-indigo-50 rounded-lg text-sm">
-                            <p className="text-gray-800 font-medium mb-1">
-                                {v.example.replace(new RegExp(`(${v.word})`, 'gi'), '<strong>$1</strong>')}
-                            </p>
-                            <p className="text-gray-600">{v.exampleTranslation}</p>
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-    );
-
-    // 文章列表元件
-    const ArticleList = ({ articles }) => (
-        <div className="space-y-6">
-            {articles.map((article) => (
-                <article key={article.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <div className="text-xs font-bold text-red-600 mb-2 uppercase tracking-wider">{article.category}</div>
-                    <h2 className="text-2xl font-bold text-gray-900 mb-1">{article.titleEN}</h2>
-                    <h3 className="text-lg text-gray-600 mb-4 font-medium">{article.titleTW}</h3>
-                    <div className="prose max-w-none text-gray-700 leading-relaxed">
-                        <p>{article.content}</p>
-                    </div>
-                </article>
-            ))}
-        </div>
-    );
-
-    // 測驗元件
-    const Quiz = ({ vocabularies }) => {
-        const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-        const [score, setScore] = useState(0);
-        const [showResult, setShowResult] = useState(false);
-        const [questions, setQuestions] = useState([]);
-        const [selectedAnswer, setSelectedAnswer] = useState(null);
-        const [isAnswerChecked, setIsAnswerChecked] = useState(false);
-
-        // 初始化產生題目
-        useEffect(() => {
-            generateQuestions();
-        }, []);
-
-        const generateQuestions = () => {
-            // 隨機挑選 5 個單字出題
-            const shuffledVocab = [...vocabularies].sort(() => 0.5 - Math.random());
-            const selectedVocabs = shuffledVocab.slice(0, 5);
-            
-            const generatedQuestions = selectedVocabs.map(vocab => {
-                // 產生錯誤選項
-                const otherVocabs = vocabularies.filter(v => v.id !== vocab.id);
-                const shuffledOthers = [...otherVocabs].sort(() => 0.5 - Math.random());
-                const options = [vocab, ...shuffledOthers.slice(0, 3)].sort(() => 0.5 - Math.random());
-
-                // 決定題型：有例句的話 50% 機率考例句填空，否則考中文意思
-                const isFillInBlank = vocab.example && Math.random() > 0.5;
-
-                let questionText = '';
-                if (isFillInBlank) {
-                    // 將例句中的單字替換成底線，忽略大小寫
-                    const regex = new RegExp(vocab.word, 'gi');
-                    questionText = vocab.example.replace(regex, '______');
-                } else {
-                    questionText = `請問「${vocab.meaning}」的英文是？`;
-                }
-
-                return {
-                    vocab: vocab,
-                    questionText: questionText,
-                    options: options,
-                    type: isFillInBlank ? 'fillInBlank' : 'meaning'
-                };
-            });
-
-            setQuestions(generatedQuestions);
-            setCurrentQuestionIndex(0);
-            setScore(0);
-            setShowResult(false);
-            setSelectedAnswer(null);
-            setIsAnswerChecked(false);
-        };
-
-        const handleOptionClick = (option) => {
-            if (isAnswerChecked) return; // 已經檢查過答案就不再作動
-
-            setSelectedAnswer(option);
-            setIsAnswerChecked(true);
-
-            if (option.id === questions[currentQuestionIndex].vocab.id) {
-                setScore(prev => prev + 1);
+        const articleData = [
+            // ... existing code ...
+            {
+                title: "50 Years of Apple: From a California Garage to a Trillion-Dollar Tech Empire",
+                titleZh: "蘋果 50 年——從車庫新創公司到兆元科技帝國",
+                paragraphs: [
+                    { en: "This morning, hundreds of millions of us woke up in an ecosystem created by one company. All day, their devices will fill our hands and eyes, ears and brains [and] wants and needs, until we are powerless without them.", zh: "今天早晨，我們之中有數億人存由一家公司打造的生態系中醒來。一整天，他們的裝置將填滿我們的雙手和雙眼、雙耳和大腦，還有慾望和需求，直到沒有它們我們便無能為力。" },
+                    { en: "This is the story of Steves' Apple—as in Jobs and Wozniak. The two Steves created it in a California garage, and just 50 years later, two and a half billion users make Apple one of the most influential, iconic and profitable companies the world has ever seen.", zh: "這是史蒂夫們——也就是賈伯斯和沃茲尼克——的 Apple 的故事。這兩個史蒂夫在加州的一個車庫裡創立了這家公司，而在不過五十年後，二十五億用戶讓 Apple 成為世人所見過最有影響力、最具標誌性也最會賺錢的公司之一。" },
+                    { en: "Their early values matter[ed] just as much as the hardware because along with engineering genius, Steve Wozniak brought the hippie ideals of \"computing for everyone\" and even intended to give away the design of the Apple I—for free.", zh: "他們早期的價值觀跟硬體同等重要，因為除了工程天賦，史蒂夫．沃茲尼克也帶來了「人人都能用電腦」的嬉皮理想，甚至還打算送出 Apple I 的設計——免費。" },
+                    { en: "[At] this point, Woz is in college [and] Jobs is in high school, and they both have a love of Bob Dylan, and pranks, and music, and girls and technology. And Jobs [sees] this computer, and he's like, \"You shouldn't give that away. You should sell that.\" When Woz came along, computers were for corporations and governments. Normal people did not own computers—nobody.", zh: "這時，沃茲在念大學，賈伯斯則在讀高中，他們兩人都熱愛巴布．狄倫、惡作劇、音樂、女孩和科技。然後賈伯斯看到這台電腦，他說：「你不應該把那個拱手送人。你應該把那個拿來賣。」在沃茲出現之前，電腦是給企業和政府用的。一般人不會擁有電腦——沒有人。" },
+                    { en: "They were thrilled to sell about 150 Apple Is, but the Apple II put them on the Silicon Valley map. And then, the Macintosh arrived like an adorable pet.", zh: "他們興奮地賣出約一百五十台 Apple I，但 Apple II 讓他們在矽谷受到矚目。接著，麥金塔電腦像隻討喜的寵物般登場。" },
+                    { en: "... affordable not just to the corporation—as Lisa is—but to the individual.", zh: "... 價格不僅企業買得起——像 Lisa 電腦一樣——而且個人也可負擔。" },
+                    { en: "Behind the scenes, Steve Jobs was known as harsh, demanding—even cruel. But that style would cost him his company, and in the '90s, Apple would nearly go bankrupt.", zh: "私底下，史蒂夫．賈伯斯是出了名的嚴厲、要求高——甚至殘酷。但那樣的作風將讓他失去自己的公司，而在一九九〇年代，Apple 瀕臨破產。" },
+                    { en: "This was Steve Jobs' first appearance coming out of Apple exile—[he was] pushed out in the '80s by a board and new CEO frustrated by slumping sales and his style. He'd help create the Pixar we know today in his time away, changing family entertainment forever, but it was his computer company, NeXT, that opened a way back to Apple. Macs were crashing, so they bought the NeXT operating system—along with Jobs, around 300 engineers and a radically different business plan.", zh: "這是史蒂夫．賈伯斯在結束 Apple 流亡後的首次公開露面——他在一九八〇年代因下滑的銷量及個人風格被不滿的董事會和新任執行長趕出去。在他離開的那段時間，他協助打造了我們今日所知的皮克斯，永遠地改變了家庭娛樂，但開啟重返 Apple 之路的是他的電腦公司 NeXT。當時麥金塔當機頻傳，於是他們買下 NeXT 作業系統——連同賈伯斯、約三百名工程師，以及一套截然不同的商業計畫。" },
+                    { en: "You've gotta start with the customer experience and work backwards to the technology. You can't start with the technology and try to figure out where you're gonna try to sell it.", zh: "你必須從顧客體驗出發，然後回溯到科技。你不能從科技出發，再試著想出你要把它賣到哪裡。" },
+                    { en: "There it is, right there. This amazing little device holds 1,000 songs, and it goes right in my pocket.", zh: "就是它，就在這裡。這台神奇的小裝置可以裝進一千首歌，而且它可以直接放進我的口袋。" },
+                    { en: "The company was literally quarters away from bankruptcy because it was running out of money, so it was an incredible risk for Steve to bet on this little product [and] this little team to say, \"We're gonna bet the company on it.\"", zh: "那家公司距離破產真的只剩幾季之遙，因為錢快用光了，所以史蒂夫把賭注押在這個小小的產品和這個小小的團隊上，然後說「我們要把公司賭上去」，是一個極大的風險。" },
+                    { en: "Every once in a while, a revolutionary product comes along that changes everything. [It's] an iPod, a phone and an internet communicator, and we are calling it \"iPhone.\"", zh: "每隔一段時間，一個改變一切的革命性產品就會出現。它是一台 iPod、一支手機，也是一個網路通訊裝置，我們稱它為「iPhone」。" },
+                    { en: "But his iPhone unveilings were sadly number[ed], as a rare and aggressive cancer took a visible toll. Steve Jobs would die four months later, at just 56.", zh: "然而，因為一種罕見且惡性的癌症造成顯而易見的傷害，由他揭幕的 iPhone 發表會屈指可數。史蒂夫．賈伯斯在四個月後辭世，年僅五十六歲。" }
+                ]
             }
-
-            // 延遲 1.5 秒後跳下一題
-            setTimeout(() => {
-                if (currentQuestionIndex + 1 < questions.length) {
-                    setCurrentQuestionIndex(prev => prev + 1);
-                    setSelectedAnswer(null);
-                    setIsAnswerChecked(false);
-                } else {
-                    setShowResult(true);
-                }
-            }, 1500);
-        };
-
-        if (questions.length === 0) return <div>Loading questions...</div>;
-
-        if (showResult) {
-            return (
-                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center max-w-md mx-auto">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-4">測驗結束！</h2>
-                    <div className="text-6xl mb-6">
-                        {score === 5 ? '🏆' : score >= 3 ? '👍' : '💪'}
-                    </div>
-                    <p className="text-xl mb-6">
-                        你的分數：<span className="font-bold text-indigo-600">{score}</span> / {questions.length}
-                    </p>
-                    <button 
-                        onClick={generateQuestions}
-                        className="w-full py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-colors"
-                    >
-                        再測一次
-                    </button>
-                </div>
-            );
-        }
-
-        const currentQuestion = questions[currentQuestionIndex];
-
-        return (
-            <div className="bg-white p-6 md:p-8 rounded-xl shadow-sm border border-gray-100 max-w-2xl mx-auto">
-                <div className="flex justify-between items-center mb-6">
-                    <span className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Daily Quiz</span>
-                    <span className="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full">
-                        {currentQuestionIndex + 1} / {questions.length}
-                    </span>
-                </div>
-                
-                <h3 className="text-xl md:text-2xl font-medium text-gray-800 mb-8 leading-relaxed">
-                    {currentQuestion.questionText}
-                </h3>
-
-                <div className="space-y-3">
-                    {currentQuestion.options.map((option, index) => {
-                        let buttonClass = "quiz-option w-full text-left p-4 rounded-lg border-2 transition-all duration-200 focus:outline-none ";
-                        
-                        if (isAnswerChecked) {
-                            if (option.id === currentQuestion.vocab.id) {
-                                // 正確答案顯示綠色
-                                buttonClass += "border-green-500 bg-green-50 text-green-800";
-                            } else if (selectedAnswer && selectedAnswer.id === option.id) {
-                                // 選錯的答案顯示紅色
-                                buttonClass += "border-red-500 bg-red-50 text-red-800";
-                            } else {
-                                // 其他選項淡化
-                                buttonClass += "border-gray-200 bg-gray-50 text-gray-400";
-                            }
-                        } else {
-                            buttonClass += "border-gray-200 bg-white hover:border-indigo-300 hover:bg-indigo-50 text-gray-700";
-                        }
-
-                        return (
-                            <button
-                                key={index}
-                                onClick={() => handleOptionClick(option)}
-                                disabled={isAnswerChecked}
-                                className={buttonClass}
-                            >
-                                <span className="font-bold mr-3 text-gray-400">{String.fromCharCode(65 + index)}.</span>
-                                {currentQuestion.type === 'meaning' ? option.word : option.meaning}
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
-        );
-    };
-
-    // --- 主應用程式 ---
-    const App = () => {
-        const [activeTab, setActiveTab] = useState('vocabulary');
-
-        return (
-            <div className="min-h-screen flex flex-col">
-                {/* 導覽列 */}
-                <header className="bg-white shadow-sm sticky top-0 z-10">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex justify-between h-16">
-                            <div className="flex items-center">
-                                <i className="fa-solid fa-book-open text-indigo-600 text-2xl mr-3"></i>
-                                <span className="font-bold text-xl text-gray-900 tracking-tight">Global Watch Learning Hub</span>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-
-                {/* 主要內容區 */}
-                <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                    
-                    {/* 標題區 */}
-                    <div className="mb-8">
-                        <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                            每日英文閱讀紀錄
-                        </h1>
-                        <p className="mt-2 text-lg text-gray-600">
-                            Volume: <span className="font-semibold text-indigo-600">1 MON</span>
-                        </p>
-                    </div>
-
-                    {/* 頁籤導覽 */}
-                    <div className="border-b border-gray-200 mb-8">
-                        <nav className="-mb-px flex space-x-8 overflow-x-auto" aria-label="Tabs">
-                            <button
-                                onClick={() => setActiveTab('vocabulary')}
-                                className={`${
-                                    activeTab === 'vocabulary'
-                                        ? 'border-indigo-500 text-indigo-600'
-                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base transition-colors flex items-center`}
-                            >
-                                <i className="fa-solid fa-language mr-2"></i> 精選字彙庫
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('reading')}
-                                className={`${
-                                    activeTab === 'reading'
-                                        ? 'border-indigo-500 text-indigo-600'
-                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base transition-colors flex items-center`}
-                            >
-                                <i className="fa-regular fa-newspaper mr-2"></i> 文章閱讀
-                            </button>
-                            <button
-                                onClick={() => setActiveTab('quiz')}
-                                className={`${
-                                    activeTab === 'quiz'
-                                        ? 'border-indigo-500 text-indigo-600'
-                                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm md:text-base transition-colors flex items-center`}
-                            >
-                                <i className="fa-solid fa-gamepad mr-2"></i> 每日複習測驗
-                            </button>
-                        </nav>
-                    </div>
-
-                    {/* 內容顯示區 */}
-                    <div className="transition-opacity duration-300 ease-in-out">
-                        {activeTab === 'vocabulary' && (
-                            <div>
-                                <div className="mb-4 flex items-center justify-between">
-                                    <h2 className="text-xl font-semibold text-gray-800">已收錄 {vocabularyData.length} 個單字</h2>
-                                </div>
-                                <VocabList vocabularies={vocabularyData} />
-                            </div>
-                        )}
-                        
-                        {activeTab === 'reading' && (
-                            <div>
-                                <h2 className="text-xl font-semibold text-gray-800 mb-6">今日焦點新聞</h2>
-                                <ArticleList articles={articleData} />
-                            </div>
-                        )}
-
-                        {activeTab === 'quiz' && (
-                            <div>
-                                <h2 className="text-xl font-semibold text-gray-800 mb-6 text-center">驗收今天的學習成果吧！</h2>
-                                <Quiz vocabularies={vocabularyData} />
-                            </div>
-                        )}
-                    </div>
-
-                </main>
-
-                {/* 頁尾 */}
-                <footer className="bg-white border-t border-gray-200 mt-auto">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        <p className="text-center text-sm text-gray-500">
-                            Created from Global Watch magazine screenshots. Keep learning!
-                        </p>
-                    </div>
-                </footer>
-            </div>
-        );
-    };
-
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-</script>
-</body>
-</html>
+        ];
+<!-- ... existing code ... -->
